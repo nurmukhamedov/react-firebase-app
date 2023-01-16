@@ -1,3 +1,61 @@
 .widget {
     display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding: 10px;
+    box-shadow: 2px 4px 10px 1px rgba(201, 201,201, 0.47);
+    height: 100px;
+    border-radius: 10px;
+    &__left, &__right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 14px;
+        color: rgb(158, 153, 153);
+    } 
+    &__counter {
+        font-size: 28px;
+        font-weight: 300;
+    }
+    &__link {
+        width: max-content;
+        font-size: 12px;
+        border-bottom: 1px solid gray;
+    }
+    &__percentage {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+    } 
+    &__positive {
+        color: green;
+    }
+    &__negative {
+        color: red;
+    }
+    &__icon {
+        font-size: 18px;
+        padding: 5px;
+        border-radius: 10px;
+        align-self: flex-end; 
+        &--person {
+            color: crimson;
+            background-color: rgba(255, 0, 0, 0.2);
+        } 
+        &--shopping {
+            color: goldenrod;
+            background-color: rgba(218, 165, 32, 0.2);
+        } 
+        &--money {
+            color: green;
+            background-color: rgba(0, 128, 0, 0.2);
+        } 
+        &--balance {
+            color: purple;
+            background-color: rgba(128, 0, 128, 0.2);
+        }
+    }
 }
