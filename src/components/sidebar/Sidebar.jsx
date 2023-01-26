@@ -1,4 +1,5 @@
-import "./Sidebar.scss";
+import { Link } from "react-router-dom";
+
 import DashBoardIcon from "@mui/icons-material/Dashboard";
 import PermIdentityIcon from "@mui/icons-material/PermIdentity";
 import InventoryIcon from "@mui/icons-material/Inventory";
@@ -11,11 +12,17 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { DarkModeContext } from "../../context/darkModeContext";
+import { useContext } from "react";
+import "./Sidebar.scss";
 const Sidebar = () => {
+	const { dispatch } = useContext(DarkModeContext);
 	return (
 		<div className="sidebar">
 			<div className="sidebar__top">
-				<span className="sidebar__logo">Nurmukhamedov Admin</span>
+				<Link to="/">
+					<span className="sidebar__logo">Nurmukhamedov Admin</span>
+				</Link>
 			</div>
 			<hr className="sidebar__line" />
 			<div className="sidebar__center">
@@ -26,14 +33,19 @@ const Sidebar = () => {
 						<span className="sidebar__menu--span">Dashboard</span>
 					</li>
 					<p className="sidebar__menu--title">Lists</p>
-					<li className="sidebar__menu--item">
-						<PermIdentityIcon className="sidebar__menu--icon" />
-						<span className="sidebar__menu--span">Users</span>
-					</li>
-					<li className="sidebar__menu--item">
-						<InventoryIcon className="sidebar__menu--icon" />
-						<span className="sidebar__menu--span">Products</span>
-					</li>
+					<Link to="/users">
+						<li className="sidebar__menu--item">
+							<PermIdentityIcon className="sidebar__menu--icon" />
+							<span className="sidebar__menu--span">Users</span>
+						</li>
+					</Link>
+					<Link to="/products">
+						<li className="sidebar__menu--item">
+							<InventoryIcon className="sidebar__menu--icon" />
+							<span className="sidebar__menu--span">Products</span>
+						</li>
+					</Link>
+
 					<li className="sidebar__menu--item">
 						<TakeoutDiningOutlinedIcon className="sidebar__menu--icon" />
 						<span className="sidebar__menu--span">Orders</span>
@@ -76,9 +88,12 @@ const Sidebar = () => {
 				</ul>
 			</div>
 			<div className="sidebar__bottom">
-				<div className="sidebar__bottom--option"></div>
-				<div className="sidebar__bottom--option"></div>
-				<div className="sidebar__bottom--option"></div>
+				<div
+					className="sidebar__bottom--option"
+					onClick={() => dispatch({ type: "LIGHT" })}></div>
+				<div
+					className="sidebar__bottom--option"
+					onClick={() => dispatch({ type: "DARK" })}></div>
 			</div>
 		</div>
 	);
